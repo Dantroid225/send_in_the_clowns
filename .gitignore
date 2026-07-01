@@ -13,31 +13,35 @@ files.zip
 *.secret
 .secrets/
 
-# ── Unity (created in Phase 0; ignore generated folders pre-emptively) ──────
-unity/unity_clowns/Library/
-unity/unity_clowns/Temp/
-unity/unity_clowns/Obj/
-unity/unity_clowns/Build/
-unity/unity_clowns/Builds/
-unity/unity_clowns/Logs/
-unity/unity_clowns/UserSettings/
-unity/unity_clowns/MemoryCaptures/
-unity/unity_clowns/Recordings/
-unity/unity_clowns/.vs/
-unity/unity_clowns/*.csproj
-unity/unity_clowns/*.sln
-unity/unity_clowns/*.user
-unity/unity_clowns/*.userprefs
-unity/unity_clowns/*.pidb
-unity/unity_clowns/*.booproj
-unity/unity_clowns/*.suo
-unity/unity_clowns/*.unityproj
-unity/unity_clowns/*.svd
-unity/unity_clowns/*.pdb.meta
-unity/unity_clowns/*.apk
-unity/unity_clowns/*.aab
-unity/unity_clowns/*.unitypackage
-unity/unity_clowns/crashlog/
+# ── Unity generated folders (project-name-agnostic — matches any project ────
+#    under unity/, so it covers unity_clowns/ AND the current
+#    unity/Send_in_the_Clowns/ the user created). Source (Assets/, Packages/,
+#    ProjectSettings/) is intentionally NOT ignored — but is not committed by
+#    the bootstrap; committing the Unity project is a Phase 0 decision.
+unity/*/Library/
+unity/*/Temp/
+unity/*/Obj/
+unity/*/Build/
+unity/*/Builds/
+unity/*/Logs/
+unity/*/UserSettings/
+unity/*/MemoryCaptures/
+unity/*/Recordings/
+unity/*/.vs/
+unity/*/*.csproj
+unity/*/*.sln
+unity/*/*.user
+unity/*/*.userprefs
+unity/*/*.pidb
+unity/*/*.booproj
+unity/*/*.suo
+unity/*/*.unityproj
+unity/*/*.svd
+unity/*/*.pdb.meta
+unity/*/*.apk
+unity/*/*.aab
+unity/*/*.unitypackage
+unity/*/crashlog/
 
 # ── Python (workspace venv / utility scripts) ───────────────────────────────
 __pycache__/

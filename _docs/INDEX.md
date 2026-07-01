@@ -41,6 +41,7 @@
 - _(empty)_ — immutable troubleshooting snapshots; opt-in context, never auto-read. Habit starts Phase 1. **LIVING.**
 
 ## Archive (`archive/`)
+- [archive/README.md](archive/README.md) — deprecation notes for archived docs. **REFERENCE.**
 - [CLOWNS_PROJECT_SCAFFOLDING_GUIDE.md](archive/CLOWNS_PROJECT_SCAFFOLDING_GUIDE.md) — the bootstrap brief this repo was built from. **ARCHIVED** (job done).
 - [HUMOR_SYSTEM_HANDOFF_PROMPT.md](archive/HUMOR_SYSTEM_HANDOFF_PROMPT.md) — one-time handoff artifact; fold outcomes into DECISIONS.md. **ARCHIVED.**
 
