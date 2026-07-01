@@ -1,0 +1,61 @@
+# .gitignore — Send in the Clowns
+# Purpose: Keep build artifacts, secrets, and large binaries out of the repo.
+# Created: 2026-06-30 | Last Modified: 2026-06-30
+# Related: .gitattributes, CLAUDE.md §Security
+
+# ── Bootstrap / upload artifacts ───────────────────────────────────────────
+*.zip
+files.zip
+
+# ── Secrets (no backend at MVP, but never leak one if added) ────────────────
+.env
+.env.*
+*.secret
+.secrets/
+
+# ── Unity (created in Phase 0; ignore generated folders pre-emptively) ──────
+unity/unity_clowns/Library/
+unity/unity_clowns/Temp/
+unity/unity_clowns/Obj/
+unity/unity_clowns/Build/
+unity/unity_clowns/Builds/
+unity/unity_clowns/Logs/
+unity/unity_clowns/UserSettings/
+unity/unity_clowns/MemoryCaptures/
+unity/unity_clowns/Recordings/
+unity/unity_clowns/.vs/
+unity/unity_clowns/*.csproj
+unity/unity_clowns/*.sln
+unity/unity_clowns/*.user
+unity/unity_clowns/*.userprefs
+unity/unity_clowns/*.pidb
+unity/unity_clowns/*.booproj
+unity/unity_clowns/*.suo
+unity/unity_clowns/*.unityproj
+unity/unity_clowns/*.svd
+unity/unity_clowns/*.pdb.meta
+unity/unity_clowns/*.apk
+unity/unity_clowns/*.aab
+unity/unity_clowns/*.unitypackage
+unity/unity_clowns/crashlog/
+
+# ── Python (workspace venv / utility scripts) ───────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ── Node (if any tooling lands) ─────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+
+# ── Blender autosave ────────────────────────────────────────────────────────
+*.blend1
+*.blend2
+
+# ── OS / editor cruft ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*~
