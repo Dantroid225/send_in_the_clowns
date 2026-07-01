@@ -37,15 +37,6 @@ logic and no real Unity project created (gated — see blockers).
 - **[OPEN] Repo folder vs. codename mismatch.** Repo folder is `send_the_clowns`; guide/docs use
   codename `clowns` and Unity canonical paths `unity_clowns/` + `Assets/_clowns/`. Resolved in
   favor of: keep folder `send_the_clowns`, keep Unity canonical `_clowns` naming. Note only — not a blocker.
-- **[NEEDS DECISION] Unexpected Unity project present at `unity/Send_in_the_Clowns/`.** A real Unity
-  project (default URP template — Scenes, Settings, TutorialInfo, InputSystem_Actions, Readme.asset)
-  appeared during the 2026-06-30 bootstrap session and is open in the Editor (locked Temp). **Claude
-  Code did NOT create it** (step 12 gated project creation). It is left **untracked** in git — its
-  generated folders are gitignored (`unity/*/Library|Temp|Logs|...`), its source is not committed.
-  **Decisions owed:** (a) is this the intended Phase 0 project? (b) reconcile its name
-  `Send_in_the_Clowns` vs. the planned canonical `unity_clowns` (see DEC-2026-06-30-D); (c) when to
-  commit it (recommend: after Phase 0 boundary confirm, with an intentional first Unity commit + a
-  standard Unity `.gitignore` inside the project). Confirm its Editor version too (blocker: freeze LTS).
 
 ---
 
