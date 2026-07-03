@@ -37,3 +37,19 @@ the guide's canonical internal names — `unity/unity_clowns/` with `Assets/_clo
 existing references and the user pointed Claude Code at this folder. Unity-internal canonical names
 are kept to match `CLOWNS_PROJECT_SCAFFOLDING_GUIDE.md` §2 and parent CLAUDE_PROJECT_RULES §8.2.
 **Owner:** Claude Code CLI (bootstrap) — confirm at next Mission Control review (cosmetic; non-blocking).
+
+## DEC-2026-07-01-E
+**Decision:** Freeze the Unity Editor version at **6000.3.17f1** for `unity/unity_clowns/`.
+**Reasoning:** Workspace-installed candidate; the URP project was created on it and its
+`ProjectSettings/ProjectVersion.txt` records it. Freezing satisfies the long-open
+`PROJECT_STATUS.md` "Unity LTS version not frozen" item.
+**Owner:** User (authorized the Phase 0 build) — recorded by Claude Code CLI executing TB-01.
+
+## DEC-2026-07-01-F
+**Decision:** The Phase 0 build gate is treated as **cleared by the USER** — the `unity_clowns`
+project was created and the USER directed Claude Code to execute TB-01 (bootstrap) and TB-02
+(data layer). Unity work in this repo is no longer blocked on a separate Mission Control confirmation.
+**Reasoning:** The USER is the authority for the Phase 0 boundary blocker; direct instruction to
+implement + an existing project supersede the "do not scaffold until the gate clears" note in
+`CLAUDE.md` §1 and the old `UNITY_CONTEXT.md` stub.
+**Owner:** User — confirm framing at next Mission Control review (non-blocking).

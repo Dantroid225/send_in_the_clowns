@@ -1,44 +1,54 @@
 # UNITY_CONTEXT.md — Send in the Clowns
 # Purpose: Unity-specific cold-start context. Paste into Cursor/Claude Code when doing Unity work.
-# Created: 2026-06-30 | Last Modified: 2026-06-30
-# Status: ⚠ STUB — NO UNITY PROJECT EXISTS YET. Creating it is Phase 0 build work, GATED
-#         on the Phase 0 boundary confirmation owed from Mission Control
-#         (see ../_docs/PROJECT_STATUS.md blockers). Do NOT `unity_*` / init a project until then.
+# Created: 2026-06-30 | Last Modified: 2026-07-01
+# Status: ACTIVE — Unity project exists (Phase 0 build in progress).
 
 ---
 
-## Current state
-There is **no `unity_clowns/` project**. This folder holds only this stub. The scaffolding brief
-(archived at `../_docs/archive/CLOWNS_PROJECT_SCAFFOLDING_GUIDE.md` §13 step 12) explicitly gates
-project creation behind the Phase 0 boundary decision.
+## Current state (2026-07-01)
+The `unity/unity_clowns/` project **exists** and Phase 0 build has begun.
+- **Editor version (FROZEN):** **Unity 6000.3.17f1** — see DEC-2026-07-01-E.
+- **Render pipeline:** URP 17.3.0.
+- **Serialization:** Force Text + Visible Meta Files (URP template defaults; verified).
+- **Key packages:** AI Navigation 2.0.12 (NavMesh), Input System 1.19.0, Test Framework 1.6.0,
+  and **AnkleBreaker Unity MCP** (`com.anklebreaker.unity-mcp`, git URL in `manifest.json`).
+  Bridge port: **7890** (auto-discovered — always use `unity_list_instances`, never hard-code).
+- **Code root:** `Assets/_clowns/` with an asmdef split (`Clowns.Runtime`, `Clowns.Editor`,
+  `Clowns.Tests.EditMode`). `Assets/_clowns/Net/` is a **reserved Phase-1 slot** (README only, no asmdef).
 
-## When Phase 0 build is approved — create the project as:
+## ⚠ STANDING RULE — check the Unity MCP port EVERY session (ports can switch)
+The CoplayDev MCP **auto-discovers** running Editors; the bridge port is **not** guaranteed to be
+7890 and can change between sessions/instances. So, at the start of any Unity MCP work:
+1. Call **`unity_list_instances`** first — never assume a port.
+2. Call **`unity_select_instance`** with the discovered port.
+3. Pass **`port: <number>`** on every subsequent `unity_*` call (parallel-safety).
+4. If multiple instances are listed, **ask the user which** before proceeding.
+5. NEVER call the HTTP bridge directly (`http://127.0.0.1:<port>/api/...`) — MCP tools only.
+If `unity_list_instances` returns none, the Editor is closed — open the project, then retry.
+
+## Assembly layout
 ```
-unity/
-└── unity_clowns/                 ← Unity LTS + URP project root (canonical path)
-    ├── CLAUDE.md                 ← Unity-subtree Claude Code rules (netcode + org invariants)
-    └── Assets/
-        └── _clowns/              ← game-specific code root (parent CLAUDE_PROJECT_RULES §8.2)
-            └── _docs/
-                └── ai/           ← Unity AI conventions (csharp, netcode, org)
+Assets/_clowns/
+  Runtime/  Clowns.Runtime.asmdef        (rootNamespace "Clowns"; no editor/test refs)
+    Core/ Data/ Combat/ Clown/ Enemy/ Feedback/
+  Editor/   Clowns.Editor.asmdef         (refs Clowns.Runtime; Editor-only)
+  Tests/EditMode/ Clowns.Tests.EditMode.asmdef  (refs Clowns.Runtime + TestRunner; Editor-only)
+  GameData/ (SO asset instances)   Scenes/ (ToyArena.unity)   Art/greybox/
+  Net/      README.md only — RESERVED Phase 1 (Clowns.Net refs Runtime, never the reverse)
 ```
 
-## Intended Unity setup (confirm before creating)
-- **Editor version to freeze:** **Unity 6000.3.17f1** is the workspace-installed candidate — **CONFIRM
-  as the frozen LTS version before creating the project.** Record the final choice here + in DECISIONS.md.
-- **Render pipeline:** URP (2D / low-poly stylized 3D; grey-box until the toy proves fun).
-- **Architecture:** ScriptableObject-based (Ryan Hipple). Abilities, humor types/sub-types, and
-  per-type mechanics as **SO data** so the affinities are inspector-tunable.
-- **Networking:** FishNet, **Phase 1** (not Phase 0). Host/listen server; **client-authoritative
-  movement + `NetworkTransform`** (DEC-2026-06-29-B). No server authority.
+## Intended Unity setup
+- **Architecture:** ScriptableObject-based (Ryan Hipple). Humor types, temperaments, and the
+  affinity grid are **SO data** so the read is inspector-tunable — no enum branches, no hard-coding.
+- **Networking:** FishNet, **Phase 1** (not Phase 0). Host/listen; **client-authoritative movement +
+  `NetworkTransform`** (DEC-2026-06-29-B). No server authority.
 - **Movement/pathfinding:** Unity NavMesh — owner runs its own clown's agent; host runs enemy agents.
 
 ## Invariants that bind Unity work (from ../_docs/TOOL_ROLES.md + CLAUDE.md)
 1. Client-authoritative movement only — no server authority / Prediction V2. (DEC-B)
 2. No written joke text in any asset, string, or SO — performed gibberish only. (DEC-C)
-3. Humor-type SO data is never mutated at runtime (reserve this invariant; enforce once SOs exist).
-4. The mirth meter value is written in exactly one authoritative place (once the meter exists).
-
-## Unity MCP note
-Live Editor work routes through **Cursor + Unity MCP** (bridge port 7890). Claude Code CLI handles
-batch C#/script/file/git work. See ../_docs/TOOL_ROLES.md for the routing rule.
+   → `ClownDataSO.DisplayName` is debug/UI only and must never read as comedy.
+3. Humor-type / affinity SO data is authored data, not mutated at runtime.
+4. The mirth meter value is written in exactly one authoritative place (once the meter exists, TB-03).
+5. No humor type universally best; the matchup must stay a real, visible decision (Pillar 2) —
+   enforced in-editor by **Clowns ▸ Validate Affinity Table**.

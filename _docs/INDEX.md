@@ -51,4 +51,4 @@
 - [README.md](../README.md) — public-facing description + doc pointers.
 - [PROJECT_CONTEXT.md](../PROJECT_CONTEXT.md) — cold-start block (paste into any tool).
 - [CLAUDE.md](../CLAUDE.md) — Claude Code CLI project rules (auto-loads).
-- [unity/UNITY_CONTEXT.md](../unity/UNITY_CONTEXT.md) — Unity-specific cold-start. **STUB** (no Unity project until Phase 0).
+- [unity/UNITY_CONTEXT.md](../unity/UNITY_CONTEXT.md) — Unity-specific cold-start + standing Unity-MCP-port rule. **ACTIVE** (project exists; Phase 0 build in progress).

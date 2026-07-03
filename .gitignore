@@ -43,6 +43,13 @@ unity/*/*.aab
 unity/*/*.unitypackage
 unity/*/crashlog/
 
+# ── Telemetry target folder is TRACKED (TB-01 §5) but its runtime contents are not.
+#    Re-includes the folder placeholder while keeping Unity's editor logs / playtest
+#    telemetry out of git. Must come AFTER the `unity/*/Logs/` rule above.
+!unity/unity_clowns/Logs/
+unity/unity_clowns/Logs/*
+!unity/unity_clowns/Logs/.gitkeep
+
 # ── Python (workspace venv / utility scripts) ───────────────────────────────
 __pycache__/
 *.py[cod]

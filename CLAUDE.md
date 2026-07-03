@@ -71,5 +71,13 @@ temperaments, a few humor types.
 - **Git:** commit only when asked; `main` = stable. Confirm `.env`/secrets are gitignored before any
   git op. Never commit credentials. (No backend at MVP, so no secrets yet.)
 
-## 6. After every session
+## 6. Unity MCP — check the port EVERY session (ports can switch)
+The CoplayDev Unity MCP (`com.coplaydev.unity-mcp`) **auto-discovers** running Editors; the bridge
+port is **not** guaranteed to be 7890 and can change between sessions/instances. Before any Unity MCP
+work: (1) call `unity_list_instances` first — never assume a port; (2) `unity_select_instance` with
+the discovered port; (3) pass `port: <number>` on every subsequent `unity_*` call; (4) if multiple
+instances are listed, ask which; (5) never call the HTTP bridge directly. If none are listed, the
+Editor is closed — open the project and retry. Full detail: `unity/UNITY_CONTEXT.md`.
+
+## 7. After every session
 Update `_docs/PROJECT_STATUS.md` (phase / last action / next / blockers), even for partial sessions.
