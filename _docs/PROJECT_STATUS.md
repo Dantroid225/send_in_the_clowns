@@ -38,7 +38,7 @@ Wit→Rowdy=Strong triggered both FAILs ✓, reverted to PASS ✓, 0 compile err
   HUMOR_SYSTEM §7 as tunable defaults, but the fuller read still depends on this deliverable.
 - **[OPEN] 3-word target experience still provisional** — "Read. Riff. Roar." Lock via
   `brainstorms/CONCEPT_QUESTIONNAIRE.md` Q1.
-- **[OPEN] GitHub repo name unconfirmed.** Suggested `send-in-the-clowns`. No remote created yet.
+- **[RESOLVED 2026-07-02] GitHub repo created as `send_in_the_clowns`.** Remote pushed; URL is https://github.com/Dantroid225/send_in_the_clowns.
 - **[OPEN] Repo folder vs. codename mismatch.** Repo folder is `send_the_clowns`; guide/docs use
   codename `clowns` and Unity canonical paths `unity_clowns/` + `Assets/_clowns/`. Resolved in
   favor of: keep folder `send_the_clowns`, keep Unity canonical `_clowns` naming. Note only — not a blocker.

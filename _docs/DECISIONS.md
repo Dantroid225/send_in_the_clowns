@@ -53,3 +53,11 @@ project was created and the USER directed Claude Code to execute TB-01 (bootstra
 implement + an existing project supersede the "do not scaffold until the gate clears" note in
 `CLAUDE.md` §1 and the old `UNITY_CONTEXT.md` stub.
 **Owner:** User — confirm framing at next Mission Control review (non-blocking).
+
+## DEC-2026-07-02-G
+**Decision:** GitHub repository created as **`send_in_the_clowns`** (public). Remote added and main
+branch pushed.
+**Reasoning:** Matches the repo folder naming (underscores); public for transparency; USER
+authorized creation on 2026-07-02 post-TB-01/TB-02 commit.
+**Owner:** User (authorized via "create it and push").
+**URL:** https://github.com/Dantroid225/send_in_the_clowns
